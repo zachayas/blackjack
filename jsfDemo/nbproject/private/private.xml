@@ -4,11 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/greetings.xhtml</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/response.xhtml</file>
             <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/board.xhtml</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/css/stylesheet.css</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/src/java/guessNumber/Attempt.java</file>
+            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/WEB-INF/sun-web.xml</file>
+            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/WEB-INF/glassfish-web.xml</file>
             <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/src/java/guessNumber/UserNumberBean.java</file>
+            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>
