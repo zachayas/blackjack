@@ -40,17 +40,15 @@ public class UserNumberBean implements Serializable {
         }
     }
     
-    public static void addCash(Integer cash)
+    private static void addCash(Integer cash)
     { 
         try
         {
             PreparedStatement preparedStatement = conn.prepareStatement("UPDATE funds SET cash = ?" );
           
             preparedStatement.setInt(1, cash);
-            preparedStatement.executeUpdate();   
-            
+            preparedStatement.executeUpdate();      
         }
-        
         catch (SQLException sqlExcept)
         {
             sqlExcept.printStackTrace();
