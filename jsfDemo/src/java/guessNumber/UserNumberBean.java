@@ -20,6 +20,7 @@ public class UserNumberBean implements Serializable {
 
     Integer randomInt;
     String  response;
+    Boolean show = false;
     private static String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
     private static String tableName = "FUNDS";
     // jdbc Connection
@@ -101,12 +102,15 @@ public class UserNumberBean implements Serializable {
     public UserNumberBean() {
         createConnection();
     }
-
-    public boolean active(Integer i){
-        if(i == 1){
-        return false;
-        }
-        return true;
+    public boolean getShow(){
+        return show;
+    }
+    public boolean active(Boolean boo){
+       if (boo == true){
+           return show = false;
+       } else {
+          return show = true; 
+       }
     }
 }
 

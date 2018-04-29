@@ -19,20 +19,13 @@
             </div>
             <h:button value="h:button" outcome="" image="PNG/back.png" style="height:150px;vertical-align: 0cm;"/>
             <div align="center">
-                <h:graphicImage value="PNG/5.png" style="height:150px;vertical-align:-4cm;" rendered="#{UserNumberBean.active(0)}"/>
-                <h:commandButton id="play" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
+                <h:graphicImage value="PNG/5.png" style="height:150px;vertical-align:-4cm;" rendered="#{UserNumberBean.show}"/>
+                <h:commandButton id="hit1" value="HIT" action="#{UserNumberBean.active(UserNumberBean.show)}" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
+                <h:commandButton id="hit2" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
+                <h:commandButton id="hit3" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
+                <h:commandButton id="hit4" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
+                <h:commandButton id="hit5" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
             </div>
-            <h:panelGroup id="doBtnPG">
-                <h:commandButton value="Do" rendered="#{myBean.showDo}" action="#{myBean.doAction}">
-                    <f:ajax render="unDoBtnPG"/>
-                </h:commandButton>
-            </h:panelGroup>
-
-            <h:panelGroup id="unDoBtnPG">
-                <h:commandButton value="Un Do" rendered="#{myBean.showUndo}" action="#{myBean.undoAction}">
-                    <f:ajax render="doBtnPG"/>
-                </h:commandButton>
-            </h:panelGroup>
         </h:form>
 
     </body>
