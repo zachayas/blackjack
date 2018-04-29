@@ -22,7 +22,7 @@
     
         <h:form>  
             <h:inputText value = "#{UserNumberBean.getCash()}" readonly = "true"/>
-            <h:commandButton id="submit" value="Play" action="board"/>              
+            <h:commandButton id="submit" value="Play" action="#{UserNumberBean.addCash(50)}"/>              
         </h:form>
    
     </body>
