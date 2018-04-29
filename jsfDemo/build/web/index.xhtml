@@ -1,23 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+     xmlns:h="http://xmlns.jcp.org/jsf/html">
     <head>
-        <title>Guessing Game</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
         <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
+        <!--<h:outputStylesheet name="css/stylesheet.css" />-->
+
+        <title>Greeting</title>
     </head>
+
     <body>
         <div id="mainContainer">
-            
+
             <div id="left" class="subContainer greyBox">
+
                 <h4>Hi, my name is Duke!</h4>
 
                 <h5>I'm thinking of a number
@@ -29,37 +27,23 @@ and open the template in the editor.
 
                 <h5>Can you guess it?</h5>
 
+<!--                <form action="response.xhtml">
+                    <input type="text" size="2" maxlength="2" />
+                    <input type="submit" value="submit" />
+                </form>-->
+
                 <h:form>
-                    <h:inputText size="2" maxlength="2" value="#{UserNumberBean.userNumber}" />
+                    <h:inputText id="userNumber" size="2" maxlength="2" value="#{UserNumberBean.userNumber}" />
                     <h:commandButton id="submit" value="submit" action="response" />
                 </h:form>
             </div>
+
             <div id="right" class="subContainer">
+
                 <img src="duke.png" alt="Duke waving" />
+                <!--<h:graphicImage url="/duke.png" alt="Duke waving" />-->
+
             </div>
         </div>
-        <h1>Past Attempts</h1>
-        <h:dataTable value="#{UserNumberBean.getAttempts()}" var="o"
-            styleClass="order-table"
-    			headerClass="order-table-header"
-    			rowClasses="order-table-odd-row,order-table-even-row"
-    		>
-
-    			<h:column>
-    				<f:facet name="header">Timestamp</f:facet>
-    				#{o.atime}
-    			</h:column>
-
-    			<h:column>
-    				<f:facet name="header">User's Guess</f:facet>
-    				#{o.usernum}
-    			</h:column>
-
-    			<h:column>
-    				<f:facet name="header">Duke's Number</f:facet>
-    				#{o.actualnum}
-    			</h:column>
-
-    		</h:dataTable>
     </body>
 </html>

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package guessNumber;
 
 import java.io.Serializable;
@@ -11,49 +6,110 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import java.sql.*;
+import java.util.*;
+
 
 /**
  *
- * @author zacha
+ * @author nbuser
  */
 @ManagedBean(name = "UserNumberBean")
 @SessionScoped
 public class UserNumberBean implements Serializable {
-        
-       Integer randomInt;
-       Integer userNumber;
-       String response;
-       
-    public String getResponse() {
-    if((userNumber !=null) && (userNumber.compareTo(randomInt) == 0)) {
-        //invalidates user session
-        FacesContext context = FacesContext.getCurrentInstance();
-        HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-        session.invalidate();
-        
-        return "Yay! You got it!";
-    } else {
-        return "<p>Sorry, " + userNumber + " isn't it.</p>" 
-                + "<p>Guesss again...</p>";
-    }
-}
-       
-       
-       
-    public Integer getUserNumber() {
-        return userNumber;
-    }
 
-    public void setUserNumber(Integer userNumber) {
-        this.userNumber = userNumber;
-    }
-       
-       
-    /** Creates a new instance of UserNumberBean*/
-    public UserNumberBean() {
-        Random randomGR = new Random();
-        randomInt = new Integer(randomGR.nextInt(10));
-        System.out.println("Duke's number: " + randomInt);
+    Integer randomInt;
+    String  response;
+    private static String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
+    private static String tableName = "FUNDS";
+    // jdbc Connection
+    private static Connection conn = null;
+    private static Statement stmt = null;
+    private static void createConnection()
+    {
+        try
+        {
+           Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
+            //Get a connection
+            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "zac", "ayy"); 
+            
+        }
+        catch (Exception except)
+        {
+            except.printStackTrace();
+        }
     }
     
+    public static void addCash(Integer cash)
+    { 
+        try
+        {
+            PreparedStatement preparedStatement = conn.prepareStatement("UPDATE funds SET cash = ?" );
+          
+            preparedStatement.setInt(1, cash);
+            preparedStatement.executeUpdate();   
+            
+        }
+        
+        catch (SQLException sqlExcept)
+        {
+            sqlExcept.printStackTrace();
+        }
+    }
+    
+    public static Integer getCash()
+    {
+        Integer mon = null;
+        try
+        {
+            stmt = conn.createStatement();
+            ResultSet results = stmt.executeQuery("SELECT * FROM FUNDS");
+            while(results.next()){
+            mon = results.getInt(1);
+            }
+            
+            results.close();
+            stmt.close();
+            return mon;
+        }
+        catch (SQLException sqlExcept)
+        {
+            sqlExcept.printStackTrace();
+        }
+        return null;
+    }
+    
+    private static void shutdown()
+    {
+        try
+        {
+            if (stmt != null)
+            {
+                stmt.close();
+            }
+            if (conn != null)
+            {
+                DriverManager.getConnection(dbURL);
+                conn.close();
+            }           
+        }
+        catch (SQLException sqlExcept)
+        {
+            
+        }
+
+    }
+    
+    /** Creates a new instance of UserNumberBean */
+    public UserNumberBean() {
+        createConnection();
+    }
+
+    public boolean active(Integer i){
+        if(i == 1){
+        return false;
+        }
+        return true;
+    }
 }
+
