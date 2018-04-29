@@ -65,7 +65,6 @@ public class UserNumberBean implements Serializable {
             while(results.next()){
             mon = results.getInt(1);
             }
-            
             results.close();
             stmt.close();
             return mon;
