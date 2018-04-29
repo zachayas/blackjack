@@ -4,25 +4,36 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-  <h:head>
+    <h:head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="css/stylesheet.css" rel="stylesheet" type="text/css" />
         <title><ui:insert name="title">21 Blackjack</ui:insert></title>
     </h:head>
-    
+
     <body>
-        
-        
-          <h:form>
-               <div align="center">
-                   <h:commandButton id="return" value="Return" action="greetings" image="/PNG/1.png" style="height:150px;vertical-align: 0cm;"/>    
-              </div>
-              <h:button value="h:button" outcome="" image="/jsfdemo/PNG/back.png" style="height:150px;vertical-align: 0cm;"/>
-              <div align="center">
-                  <h:graphicImage value="JPEG/5C.jpg" style="height:150px;vertical-align:-4cm;" rendered="#{UserNumberBean.active(1)}"/>
-              </div>
-             
-    </h:form>
-   
+
+
+        <h:form>
+            <div align="center">
+                <h:commandButton id="return" value="Return" action="greetings" image="/PNG/1.png" style="height:150px;vertical-align: 0cm;"/>    
+            </div>
+            <h:button value="h:button" outcome="" image="PNG/back.png" style="height:150px;vertical-align: 0cm;"/>
+            <div align="center">
+                <h:graphicImage value="PNG/5.png" style="height:150px;vertical-align:-4cm;" rendered="#{UserNumberBean.active(0)}"/>
+                <h:commandButton id="play" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
+            </div>
+            <h:panelGroup id="doBtnPG">
+                <h:commandButton value="Do" rendered="#{myBean.showDo}" action="#{myBean.doAction}">
+                    <f:ajax render="unDoBtnPG"/>
+                </h:commandButton>
+            </h:panelGroup>
+
+            <h:panelGroup id="unDoBtnPG">
+                <h:commandButton value="Un Do" rendered="#{myBean.showUndo}" action="#{myBean.undoAction}">
+                    <f:ajax render="doBtnPG"/>
+                </h:commandButton>
+            </h:panelGroup>
+        </h:form>
+
     </body>
 </html>
