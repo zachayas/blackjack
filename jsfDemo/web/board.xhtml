@@ -19,12 +19,20 @@
             </div>
             <h:button value="h:button" outcome="" image="PNG/back.png" style="height:150px;vertical-align: 0cm;"/>
             <div align="center">
-                <h:graphicImage value="PNG/5.png" style="height:150px;vertical-align:-4cm;" rendered="#{UserNumberBean.show}"/>
-                <h:commandButton id="hit1" value="HIT" action="#{UserNumberBean.active(UserNumberBean.show)}" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
-                <h:commandButton id="hit2" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
-                <h:commandButton id="hit3" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
-                <h:commandButton id="hit4" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
-                <h:commandButton id="hit5" value="HIT" action="greetings" style="height:50px;width: 60px;vertical-align: -7cm;"/> 
+                <h:graphicImage value="PNG/1.png" style="height:150px;vertical-align:-4cm;position: absolute;" rendered="#{Money.show1}" />     
+                <h:commandButton id="hit1" value="HIT" action="#{Money.active('show1')}" style="height:50px;width: 60px;vertical-align: -5cm;"/>    
+                
+                <h:graphicImage value="PNG/34.png" style="height:150px;vertical-align:-4cm;position: absolute;" rendered="#{Money.show2}"/>  
+                <h:commandButton id="hit2" value="HIT" action="#{Money.active('show2')}" style="height:50px;width: 60px;vertical-align: -5cm;"/> 
+                
+                <h:graphicImage value="PNG/4.png" style="height:150px;vertical-align:-4cm;position: absolute;" rendered="#{Money.show3}"/>
+                <h:commandButton id="hit3" value="HIT" action="#{Money.active('show3')}" style="height:50px;width: 60px;vertical-align: -5cm;"/>   
+                
+                <h:graphicImage value="PNG/6.png" style="height:150px;vertical-align:-4cm;position: absolute;" rendered="#{Money.show4}"/>  
+                <h:commandButton id="hit4" value="HIT" action="#{Money.active('show4')}" style="height:50px;width: 60px;vertical-align: -5cm;"/> 
+                
+                <h:graphicImage value="PNG/7.png" style="height:150px;vertical-align:-4cm;position: absolute" rendered="#{Money.show5}"/>  
+                <h:commandButton id="hit5" value="HIT" action="#{Money.active('show5')}" style="height:50px;width: 60px;vertical-align: -5cm;"/>
             </div>
         </h:form>
 

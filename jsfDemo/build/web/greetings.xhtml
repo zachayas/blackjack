@@ -21,7 +21,7 @@
         <p> If this is your first time, we'll give you a base of $50 to play. Your Money will be stored and shown below.</p>
     
         <h:form>  
-            <h:inputText value = "#{UserNumberBean.getCash()}" readonly = "true"/>
+            <h:inputText value = "#{Money.getCash()}" readonly = "true"/>
             <h:commandButton id="submit" value="Play" action="board"/>              
         </h:form>
    
