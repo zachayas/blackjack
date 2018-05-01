@@ -1,4 +1,4 @@
-package guessNumber;
+package blackjack;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
@@ -15,10 +15,6 @@ import java.util.*;
 @ManagedBean(name = "Cards")
 @SessionScoped
 public class Cards implements Serializable {
-
-    static String status;
-    static Integer value;
-    static String cards;
 
     private static String[] card = null;
     private static Integer[] val = null;
@@ -280,21 +276,28 @@ public class Cards implements Serializable {
         }
     }
 
-    public static void getStatus() {
+    public static List<Status> getStatus() {
 
         try {
             stmt = conn.createStatement();
-            ResultSet results = stmt.executeQuery("SELECT * FROM STATUS");
+            ResultSet results = stmt.executeQuery("SELECT * FROM STATUS WHERE rownum <= 10 ORDER BY rownum DESC");
+            
+              List<Status> list = new ArrayList<Status>();
+              
             while (results.next()) {
-                status = results.getString(1);
-                value = results.getInt(2);
-                cards = results.getString(3);
+               String status = results.getString(1);
+               Integer value = results.getInt(2);
+               String cards = results.getString(3);
+               list.add(new Status(status, value, cards));
             }
             results.close();
             stmt.close();
-        } catch (SQLException sqlExcept) {
+            return list;
+        } 
+        catch (SQLException sqlExcept) {
             sqlExcept.printStackTrace();
         }
+        return null;
     }
 
     public static String getCard1() {

@@ -1,4 +1,4 @@
-package guessNumber;
+package blackjack;
 
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;

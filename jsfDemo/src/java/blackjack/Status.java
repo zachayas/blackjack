@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package guessNumber;
+package blackjack;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
@@ -17,32 +17,32 @@ import javax.persistence.Id;
  * @author tylerchong
  */
 @Entity
-public class Attempt implements Serializable {
+public class Status implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    public Timestamp atime;
-    public Integer usernum;
-    public Integer actualnum;
+    public String status;
+    public Integer value;
+    public String cards;
     
-    Attempt(Timestamp atime, Integer usernum, Integer actualnum) {
-        this.atime = atime;
-        this.usernum = usernum;
-        this.actualnum = actualnum;
+    Status(String status, Integer value, String cards) {
+        this.status = status;
+        this.value = value;
+        this.cards = cards;
     }
 
-    public Timestamp getAtime() {
-        return atime;
+    public String getStatus() {
+        return status;
     }
 
-    public Integer getUsernum() {
-        return usernum;
+    public Integer getValue() {
+        return value;
     }
 
-    public Integer getActualnum() {
-        return actualnum;
+    public String getCards() {
+        return cards;
     }
     
     public Long getId() {
@@ -63,10 +63,10 @@ public class Attempt implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Attempt)) {
+        if (!(object instanceof Status)) {
             return false;
         }
-        Attempt other = (Attempt) object;
+        Status other = (Status) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

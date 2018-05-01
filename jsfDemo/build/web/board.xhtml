@@ -18,26 +18,24 @@
                 <h:graphicImage id="dealer" value="#{Cards.getCardDeal()}" style="height:150px;vertical-align: 0cm;">
                 </h:graphicImage>
             </div>
-            <h:commandButton id="re" action="#{Cards.reshuffle()}" image="PNG/back.png" style="height:150px;vertical-align: -cm;"/>
-              <h:commandButton id="deal" value="Deal" action="#{Cards.deal()}" style="height:100px;position: absolute"/>
-          <h:form>  
-            <h:inputText value = "#{Money.getCash()}" readonly = "true"/>
+            <h:commandButton id="re" action="#{Cards.reshuffle()}" image="PNG/back.png" style="height:150px;position: absolute"/>
+              <h:commandButton id="deal" value="Deal" action="#{Cards.deal()}" style="height:50px;width:90px;vertical-align: -4.4cm;position: static"/>
+                <h:inputText value = "#{Money.getCash()}" readonly = "true" style="vertical-align: -6cm;position: relative"/>
+         
+          
             <h:dataTable value="#{Cards.getStatus()}" var="o"
     			styleClass="order-table"
     			headerClass="order-table-header"
     			rowClasses="order-table-odd-row,order-table-even-row"
     		>
-
     			<h:column>
-    				<!-- column header -->
     				<f:facet name="header">Status</f:facet>
-    				<!-- row record -->
     				#{o.status}
     			</h:column>
     			
     			<h:column>
     				<f:facet name="header">Value</f:facet>
-    				#{o.val}
+    				#{o.value}
     			</h:column>
     			
     			<h:column>
@@ -46,7 +44,9 @@
     			</h:column>
     			
     		</h:dataTable>
-        </h:form>
+          </h:form>
+        
+        <h:form>
             <div align="center">
                 <h:graphicImage value="#{Cards.getCard1()}" class="cards" rendered="#{Cards.show1}"  />              
                 <h:commandButton id="hit1" value="HIT" action="#{Cards.active('show1')}" class="buttons" rendered="#{Cards.getHit1()}">    
