@@ -1,7 +1,6 @@
 package guessNumber;
 
 import java.io.Serializable;
-import java.util.Random;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -11,39 +10,13 @@ import java.util.*;
 
 /**
  *
- * @author nbuser
+ * @author zachayas
  */
 @ManagedBean(name = "Money")
 @SessionScoped
 public class Money implements Serializable {
-
-    public Boolean getShow1() {
-        return show1;
-    }
-
-    public Boolean getShow2() {
-        return show2;
-    }
-
-    public Boolean getShow3() {
-        return show3;
-    }
-
-    public Boolean getShow4() {
-        return show4;
-    }
-
-    public Boolean getShow5() {
-        return show5;
-    }
-
-    Integer randomInt;
+    
     String response;
-     static Boolean show1 = false;
-    Boolean show2 = false;
-    Boolean show3 = false;
-    Boolean show4 = false;
-    Boolean show5 = false;
     private static String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
     private static String tableName = "FUNDS";
     // jdbc Connection
@@ -67,6 +40,7 @@ public class Money implements Serializable {
 
             preparedStatement.setInt(1, cash);
             preparedStatement.executeUpdate();
+            preparedStatement.close();
         } catch (SQLException sqlExcept) {
             sqlExcept.printStackTrace();
         }
@@ -110,38 +84,4 @@ public class Money implements Serializable {
     public Money() {
         createConnection();
     }
-    
-    public boolean active(String boo) {
-        if(boo.equals("show1")){
-            if(show1 == false){
-                return show1 = true;
-            } else
-                return show1 = false;
-        }
-         if(boo.equals("show2")){
-            if(show2 == false){
-                return show2 = true;
-            } else
-                return show2 = false;
-            }
-        if(boo.equals("show3")){
-            if(show3 == false){
-                return show3 = true;
-            } else
-                return show3 = false;
-            }
-         if(boo.equals("show4")){
-            if(show4 == false){
-                return show4 = true;
-            } else
-                return show4 = false;
-            }
-           if(boo.equals("show5")){
-            if(show5 == false){
-                return show5 = true;
-            } else
-                return show5 = false;
-            }
-        return false; 
-        }
 }

@@ -12,6 +12,7 @@
 
     <body>
         <h1>Welcome to 21 Blackjack!</h1>
+        <img src="PNG/back_cards.png" style="width: 500px; height: 200px"/>
         <p> To start playing just hit the play button below.</p>
         <h3> Rules </h3>
         <p> You can bet money from $5, $10, $15, and if you win you'll make double your amount</p> 
@@ -19,7 +20,9 @@
         <p>If you are under the dealer or over 21 then you lose.</p>
         <p>If you and the dealer tie or "push", then you don't win anything nor lose anything </p>
         <p> If this is your first time, we'll give you a base of $50 to play. Your Money will be stored and shown below.</p>
-    
+        
+            
+        
         <h:form>  
             <h:inputText value = "#{Money.getCash()}" readonly = "true"/>
             <h:commandButton id="submit" value="Play" action="board"/>              
