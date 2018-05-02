@@ -27,17 +27,17 @@ public class Money implements Serializable {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
             //Get a connection
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "zac", "ayy");
+            conn = DriverManager.getConnection(dbURL, "zac", "ayy");
 
         } catch (Exception except) {
             except.printStackTrace();
         }
     }
 
-    private static void addCash(Integer cash) {
+    public static void addCash(Integer cash) {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement("UPDATE funds SET cash = ?");
-
+          
             preparedStatement.setInt(1, cash);
             preparedStatement.executeUpdate();
             preparedStatement.close();

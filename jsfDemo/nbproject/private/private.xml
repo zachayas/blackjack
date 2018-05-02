@@ -1,30 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="1">
         <file>
             <url>web/board.xhtml</url>
-            <bookmark id="2">
-                <name/>
-                <line>17</line>
-                <key/>
-            </bookmark>
             <bookmark id="1">
                 <name/>
-                <line>50</line>
+                <line>21</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/response.xhtml</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/greetings.xhtml</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/css/stylesheet.css</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/board.xhtml</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/src/java/guessNumber/Money.java</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/template.xhtml</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/web/WEB-INF/faces-config.xml</file>
-            <file>file:/C:/Users/zacha/Documents/ics321-project/jsfDemo/src/java/guessNumber/Cards.java</file>
+            <file>file:/Users/Hayas/Documents/GitHub/ics321-project/jsfDemo/web/greetings.xhtml</file>
+            <file>file:/Users/Hayas/Documents/GitHub/ics321-project/jsfDemo/web/css/stylesheet.css</file>
+            <file>file:/Users/Hayas/Documents/GitHub/ics321-project/jsfDemo/web/response.xhtml</file>
+            <file>file:/Users/Hayas/Documents/GitHub/ics321-project/jsfDemo/src/java/blackjack/Money.java</file>
+            <file>file:/Users/Hayas/Documents/GitHub/ics321-project/jsfDemo/web/board.xhtml</file>
+            <file>file:/Users/Hayas/Documents/GitHub/ics321-project/jsfDemo/src/java/blackjack/Cards.java</file>
         </group>
     </open-files>
 </project-private>

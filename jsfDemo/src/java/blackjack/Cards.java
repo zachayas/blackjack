@@ -1,5 +1,7 @@
 package blackjack;
 
+import static blackjack.Money.addCash;
+import static blackjack.Money.getCash;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -48,7 +50,6 @@ public class Cards implements Serializable {
     static Random rand = new Random();
 
     private static String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
-    private static String tableName = "Status";
 
 // jdbc Connection
     private static Connection conn = null;
@@ -95,7 +96,7 @@ public class Cards implements Serializable {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver").newInstance();
             //Get a connection
-            conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "zac", "ayy");
+            conn = DriverManager.getConnection(dbURL, "zac", "ayy");
 
         } catch (Exception except) {
             except.printStackTrace();
@@ -104,12 +105,12 @@ public class Cards implements Serializable {
 
     public static void addCard(String cardi) {
         int n;
-        n = rand.nextInt(51);
+        n = rand.nextInt(51);       
         if (card[n] != null) {
             if (cardi.equals("card1")) {
                 card1 = card[n];
                 value1 = n;
-                card[n] = null;
+                card[n] = null;               
             }
             if (cardi.equals("card2")) {
                 card2 = card[n];
@@ -125,18 +126,19 @@ public class Cards implements Serializable {
                 card4 = card[n];
                 value4 = n;
                 card[n] = null;
+                
             }
             if (cardi.equals("card5")) {
                 card5 = card[n];
                 value5 = n;
                 card[n] = null;
+                
             }
             if (cardi.equals("cardDeal") && (cardDeal == null)) {
                 cardDeal = card[n];
                 valueDeal = n;
-                card[n] = null;
+                card[n] = null;               
             }
-
         }
     }
 
@@ -201,6 +203,7 @@ public class Cards implements Serializable {
     public void deal() {
         int p = 0;
         int d = 0;
+        int m = getCash();
         StringBuilder card = new StringBuilder();
 
         if (card1 != null) {
@@ -249,26 +252,32 @@ public class Cards implements Serializable {
         }
         if (p <= 21) {
             if (p > d || d > 21) {
+                addCash(m * 2);
                 status("Win", p, card.toString());
+                
             } else if (p == d) {
                 status("Push", p, card.toString());
             } else {
+                 addCash(m - (m/2));
                 status("Lost", p, card.toString());
             }
         } else {
+             addCash(m - (m/2));
             status("Lost", p, card.toString());
         }
+        reshuffle();
     }
 
     private void status(String str, Integer val, String card) {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO STATUS"
-                    + "(WLP, VALUE, CARDS) VALUES"
-                    + "(?,?,?)");
+                    + "(WLP, VALUE, CARDS, TIMES) VALUES"
+                    + "(?,?,?,?)");
 
             preparedStatement.setString(1, str);
             preparedStatement.setInt(2, val);
             preparedStatement.setString(3, card);
+            preparedStatement.setTimestamp(4, new Timestamp(System.currentTimeMillis()) );
             preparedStatement.execute();
 
         } catch (SQLException sqlExcept) {
@@ -280,7 +289,7 @@ public class Cards implements Serializable {
 
         try {
             stmt = conn.createStatement();
-            ResultSet results = stmt.executeQuery("SELECT * FROM STATUS WHERE rownum <= 10 ORDER BY rownum DESC");
+            ResultSet results = stmt.executeQuery("SELECT * FROM (SELECT * FROM STATUS ORDER BY TIMES DESC) WHERE rownum <= 10");
             
               List<Status> list = new ArrayList<Status>();
               
