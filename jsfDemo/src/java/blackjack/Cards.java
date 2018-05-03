@@ -61,11 +61,11 @@ public class Cards implements Serializable {
     public Cards() {
         createConnection();
         card = new String[52];
-        val = new Integer[56];
+        val = new Integer[53];
         for (int i = 0; i < 52; i++) {
             card[i] = "PNG/" + (i + 1) + ".png";
         }
-        for (int i = 0; i < 56; i++) {
+        for (int i = 0; i < 53; i++) {
             if (i < 4) {
                 val[i] = 2;
             } else if (i < 8) {
@@ -86,7 +86,7 @@ public class Cards implements Serializable {
                 val[i] = 10;
             } else if (i < 52) {
                 val[i] = 1;
-            } else if (i < 56) {
+            } else {
                 val[i] = 11;
             }
         }
@@ -141,7 +141,27 @@ public class Cards implements Serializable {
             }
         }
     }
-
+    
+    public static void ace(){
+            if (val[value1] == 1) {
+                card1 = "PNG/back.png";
+                value1 = 52;
+            } else if (val[value2] == 1) {
+                card2 = "PNG/back.png";
+                value2 = 52;
+            } else if (val[value3] == 1) {
+                card3 = "PNG/back.png";
+                value3 = 52;
+            } else if (val[value4] == 1) {
+                card4 = "PNG/back.png";
+                value4 = 52;
+            } else if (val[value5] == 1) {
+                card5 = "PNG/back.png";
+                value5 = 52;
+            }
+        
+    }
+            
     public static void reshuffle() {
         card1 = null;
         card2 = null;
@@ -164,39 +184,6 @@ public class Cards implements Serializable {
 
         for (int i = 0; i < 52; i++) {
             card[i] = "PNG/" + (i + 1) + ".png";
-        }
-    }
-
-    public void active(String boo) {
-        if (boo.equals("show1")) {
-            if (show1 == false) {
-                show1 = true;
-                hit1 = false;
-            }
-        }
-        if (boo.equals("show2")) {
-            if (show2 == false) {
-                show2 = true;
-                hit2 = false;
-            }
-        }
-        if (boo.equals("show3")) {
-            if (show3 == false) {
-                show3 = true;
-                hit3 = false;
-            }
-        }
-        if (boo.equals("show4")) {
-            if (show4 == false) {
-                show4 = true;
-                hit4 = false;
-            }
-        }
-        if (boo.equals("show5")) {
-            if (show5 == false) {
-                show5 = true;
-                hit5 = false;
-            }
         }
     }
 
@@ -267,7 +254,40 @@ public class Cards implements Serializable {
         }
         reshuffle();
     }
-
+    
+    public void active(String boo) {
+        if (boo.equals("show1")) {
+            if (show1 == false) {
+                show1 = true;
+                hit1 = false;
+            }
+        }
+        if (boo.equals("show2")) {
+            if (show2 == false) {
+                show2 = true;
+                hit2 = false;
+            }
+        }
+        if (boo.equals("show3")) {
+            if (show3 == false) {
+                show3 = true;
+                hit3 = false;
+            }
+        }
+        if (boo.equals("show4")) {
+            if (show4 == false) {
+                show4 = true;
+                hit4 = false;
+            }
+        }
+        if (boo.equals("show5")) {
+            if (show5 == false) {
+                show5 = true;
+                hit5 = false;
+            }
+        }
+    }
+   
     private void status(String str, Integer val, String card) {
         try {
             PreparedStatement preparedStatement = conn.prepareStatement("INSERT INTO STATUS"

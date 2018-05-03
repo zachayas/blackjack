@@ -14,7 +14,7 @@ import javax.persistence.Id;
 
 /**
  *
- * @author tylerchong
+ * @author zachayas
  */
 @Entity
 public class Status implements Serializable {

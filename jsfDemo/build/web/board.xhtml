@@ -20,7 +20,7 @@
                 </h:graphicImage>
             </div>   
               <h:commandButton id="deal" value="Deal" action="#{Cards.deal()}" style="height:50px;width:90px;position: static"/>
-                <h:inputText value = "#{Money.getCash()}" readonly = "true" style="position: relative"/>
+                <h:inputText value = "$#{Money.getCash()}" readonly = "true" style="position: relative"/>
          
           
             <h:dataTable value="#{Cards.getStatus()}" var="o"
@@ -48,27 +48,27 @@
         
         <h:form>
             <div align="center">
-                <h:graphicImage value="#{Cards.getCard1()}" class="cards" rendered="#{Cards.show1}"  />              
-                <h:commandButton id="hit1" value="HIT" action="#{Cards.active('show1')}" class="buttons" rendered="#{Cards.getHit1()}">    
-                    <f:actionListener  binding="#{Cards.addCard('card1')}"/>
+                <h:commandButton image="#{Cards.getCard1()}" action="#{Cards.ace()}" class="cards" rendered="#{Cards.show1}"  />              
+                <h:commandButton id="hit1" value="HIT" action="#{Cards.addCard('card1')}" class="buttons" rendered="#{Cards.getHit1()}">    
+                    <f:actionListener  binding="#{Cards.active('show1')}"/>
                 </h:commandButton>
             
-                <h:graphicImage value="#{Cards.getCard2()}" class="cards" rendered="#{Cards.show2}"/>  
-                <h:commandButton id="hit2" value="HIT" action="#{Cards.active('show2')}" class="buttons" rendered="#{Cards.getHit2()}">
-                    <f:actionListener  binding="#{Cards.addCard('card2')}"/>
+                 <h:commandButton image="#{Cards.getCard2()}" action="#{Cards.ace()}" class="cards" rendered="#{Cards.show2}"  />
+                <h:commandButton id="hit2" value="HIT" action="#{Cards.addCard('card2')}" class="buttons" rendered="#{Cards.getHit2()}">
+                    <f:actionListener  binding="#{Cards.active('show2')}"/>
                 </h:commandButton>
            
-                <h:graphicImage value="#{Cards.getCard3()}" class="cards" rendered="#{Cards.show3}"/>  
-                <h:commandButton id="hit3" value="HIT" action="#{Cards.active('show3')}" class="buttons" rendered="#{Cards.getHit3()}">
-                    <f:actionListener  binding="#{Cards.addCard('card3')}"/>
+                 <h:commandButton image="#{Cards.getCard3()}" action="#{Cards.ace()}" class="cards" rendered="#{Cards.show3}"  /> 
+                <h:commandButton id="hit3" value="HIT" action="#{Cards.addCard('card3')}" class="buttons" rendered="#{Cards.getHit3()}">
+                    <f:actionListener  binding="#{Cards.active('show3')}"/>
                 </h:commandButton>                       
            
-                <h:graphicImage value="#{Cards.getCard4()}" class="cards" rendered="#{Cards.show4}"/>  
+              <h:commandButton image="#{Cards.getCard4()}" action="#{Cards.ace()}" class="cards" rendered="#{Cards.show4}"  />
                 <h:commandButton id="hit4" value="HIT" action="#{Cards.active('show4')}" class="buttons" rendered="#{Cards.getHit4()}">
                     <f:actionListener  binding="#{Cards.addCard('card4')}"/>
                 </h:commandButton>                     
           
-                  <h:graphicImage value="#{Cards.getCard5()}" class="cards" rendered="#{Cards.show5}"/>  
+                   <h:commandButton image="#{Cards.getCard5()}" action="#{Cards.ace()}" class="cards" rendered="#{Cards.show5}"  />
                 <h:commandButton id="hit5" value="HIT" action="#{Cards.active('show5')}" class="buttons" rendered="#{Cards.getHit5()}">
                     <f:actionListener  binding="#{Cards.addCard('card5')}"/>
                 </h:commandButton>
